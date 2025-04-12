@@ -223,6 +223,9 @@ button:hover {
     justify-content: center;
     align-items: center;
     text-align: center;
+    font-family: 'Pacifico', cursive;
+    font-weight: bold;
+    color: rgb(65, 65, 202);
 }
 
 .rank-badge {
