@@ -527,6 +527,33 @@ button:hover {
     margin: 1rem auto;
   }
 
+  .punishment {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #ffebee;
+    border-radius: 10px;
+    text-align: center;
+    animation: pulse 2s infinite;
+}
+
+.punishment-title {
+    font-weight: bold;
+    font-size: 1.2em;
+    color: #d32f2f;
+    margin-bottom: 10px;
+}
+
+.punishment-task {
+    font-size: 1.1em;
+    color: #333;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
   .action-buttons {
     position: fixed;
     bottom: 20px;

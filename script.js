@@ -16,6 +16,26 @@ document.addEventListener('DOMContentLoaded', function() {
             "img/panda.png"
         ],
         aiNames: ["AI Raj", "AI Rani", "AI Chor"],
+
+        punishments: [
+            "Do 2 funny faces",
+            "Dance for 30 seconds",
+            "Slap yourself (gently!)",
+            "Sing in a funny voice",
+            "Bark like a dog for 10 seconds",
+            "Touch your forehead to an elder's feet",
+            "saluate to winner like mujra",
+            "Imitate a monkey",
+            "Speak in a baby voice for 1 minute",
+            "smell little ones socks",
+            "sing through your nose",
+            "Tell a bad joke",
+            "Do your best celebrity impression",
+            "Let others draw on your hand",
+            "say, main pagal hoon! 5 times",
+            "Do like Frog"
+        ],
+    
         sounds: {
             buttonClickSound: "clickSound",  // New sound for button taps
             reveal: "revealSound",     // Used for chest reveals
@@ -435,12 +455,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function showResults() {
         playSound("reveal", true); // Special winner sound
-
+    
         const players = [];
         for (let i = 0; i < state.numPlayers; i++) {
             players.push({
                 name: state.playerNames[i],
-                score: state.scores[i]
+                score: state.scores[i],
+                index: i // Store original index for punishment
             });
         }
         
@@ -451,6 +472,12 @@ document.addEventListener('DOMContentLoaded', function() {
         
         container.innerHTML = "";
         
+        // Add a title
+        const title = document.createElement("h2");
+        title.textContent = "Final Scores";
+        container.appendChild(title);
+        
+        // Show all players
         players.forEach((player, index) => {
             const div = document.createElement("div");
             div.className = "result-item";
@@ -458,7 +485,7 @@ document.addEventListener('DOMContentLoaded', function() {
             let medal = "";
             if (index === 0) medal = "🥇";
             else if (index === 1) medal = "🥈";
-            else if (index === 2) medal = "🥉";
+            else if (index === 2 && players.length > 2) medal = "🥉";
             else medal = "😢";
             
             div.innerHTML = `
@@ -467,6 +494,22 @@ document.addEventListener('DOMContentLoaded', function() {
             `;
             container.appendChild(div);
         });
+        
+        // Add punishment for last place
+        if (players.length > 1) {
+            const lastPlayer = players[players.length - 1];
+            const randomPunishment = config.punishments[
+                Math.floor(Math.random() * config.punishments.length)
+            ];
+            
+            const punishmentDiv = document.createElement("div");
+            punishmentDiv.className = "punishment";
+            punishmentDiv.innerHTML = `
+                <div class="punishment-title">${lastPlayer.name} gets a punishment! 😜</div>
+                <div class="punishment-task">${randomPunishment}</div>
+            `;
+            container.appendChild(punishmentDiv);
+        }
         
         changeScreen("results");
     }
