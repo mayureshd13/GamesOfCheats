@@ -6,8 +6,8 @@ document.addEventListener('DOMContentLoaded', function() {
         roles: [
             { name: "RAJA", points: 1000, color: "#FFD700" },
             { name: "RANI", points: 800, color: "#C0C0C0" },
-            { name: "GENERAL", points: 600, color: "#CD7F32" },
-            { name: "SOLDIER", points: 400, color: "#FFFFFF" }
+            { name: "SENAPATI", points: 600, color: "#CD7F32" },
+            { name: "GULAM", points: 400, color: "#FFFFFF" }
         ],
         playerImages: [
             "img/lion.png",
